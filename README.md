@@ -2,8 +2,8 @@ This is a TicTacToe game written in C.
 
 It has:
 
-## Multi-player (local)
+# Multi-player (local)
 
-## Solo mode (vs AI)
+# Solo mode (vs AI)
 
 Still in development...
