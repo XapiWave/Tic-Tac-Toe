@@ -2,6 +2,8 @@
 
 It has:
 
+### ASCII UI
+
 ### Multi-player (local)
 
 ### Solo mode (vs AI)
