@@ -7,3 +7,4 @@ It has:
 ### Solo mode (vs AI)
 
 Still in development...
+The game is written in portuguese because this is my assignment from school, I'm just adding my ideas to it as fun.
