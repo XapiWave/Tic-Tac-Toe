@@ -129,7 +129,7 @@ void play(int player){
 	int ver=0, hor=0, validate=0;
 	char verC;
 	
-	if(AI == 0) {
+	if(AI == 0) {		//------------------------------------------------------------------------- AI off
 	do {
 		if(player==1)
 			printf("\n%s", player1);
@@ -149,9 +149,8 @@ void play(int player){
 	}while(!validate);
 				}
 
-//------------------------------------------------------------------------------------
-	
-	if(AI == 1) {
+
+	if(AI == 1) {		//------------------------------------------------------------------------- AI on
 		if(player==1) {			// --------------- Jogador
 		do {
 			printf("\nJogador, Insira as coordenadas || linha(numero) e a coluna(letra) || :");
@@ -192,12 +191,13 @@ void play(int player){
 int Vert(char cha){
 	int nu;
 	if(cha == 'A' || cha == 'a')
-		nu = 1;
+		nu = 0;
 	if(cha == 'B' || cha == 'b')
-		nu = 2;
+		nu = 1;
 	if(cha == 'C' || cha == 'c')
-		nu = 3;
-	nu--;
+		nu = 2;
+//	if(nu>2)
+//		nu = -1;
 	return nu;
 }
 
@@ -257,4 +257,8 @@ void gamemode() {
 	
 	system("clear");
 }
+
+
+
+
 
