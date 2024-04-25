@@ -31,21 +31,22 @@ void gamemode();
 
 // --------------------------------------------------------------------------------------------------------------------------
 
-int main(void){
-	
+int main(void)
+{
 	int winner=0, plays=0, player=0 ;
 	
 	srand(time(NULL));
 	gamemode();
 
-	switch (AI)	{
+	switch (AI)
+{
 
 	case 0:			//------------------------------------- AI off
 		
 	name();
 	reset();
 	
-	while(winner==0 && plays<=9)
+	while(winner==0 && plays<9)
 	{
 		if(plays%2==0)
 			player=1;
@@ -57,7 +58,7 @@ int main(void){
 	winner = verif();
 	
 	plays++;
-}
+	}
 system("clear");
 display();
 win(player,winner);
@@ -67,7 +68,7 @@ win(player,winner);
 
 	reset();
 		
-	while(winner==0 && plays<=9)
+	while(winner==0 && plays<9)
 	{
 		if(plays%2==0)
 			player=1;
@@ -87,7 +88,7 @@ win(player,winner);
 		break;			//}
 
 	default:
-	printf("[ ERROR ] Porfavor selecione um modo de jogo");
+printf("[ ERROR ] Porfavor selecione um modo de jogo");
 		break;
 }
 return 0;
@@ -193,6 +194,9 @@ void play(int player)
 		game[hor][ver]='O';
 		else
 		game[hor][ver]='X';
+		if(player!=1 || player != 2)
+		printf("[ ERROR ] - player not found");
+		scanf("%d", %AI);
 	
 }
 
@@ -214,12 +218,12 @@ int Vert(char cha){
 // =====================================================================================	verif
 
 int verif(){
-	for(int i=0;i<3;i++) {
+for(int i=0;i<3;i++) {
 		if(game[i][0]==game[i][1] && game[i][0]==game[i][2] && game[i][2]!=' ')
 			return 1;
 		if(game[0][i]==game[1][i] && game[0][i]==game[2][i] && game[2][i]!=' ')
 			return 1;
-	}
+		     }
 	
 	 if (game[0][0]==game[1][1] && game[0][0]==game[2][2] && game[2][2]!=' ')
    		 return 1;
