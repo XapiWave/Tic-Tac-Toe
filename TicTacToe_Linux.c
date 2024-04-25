@@ -64,7 +64,7 @@ display();
 win(player,winner);
 		break;
 
-	case 1; 		//------------------------------------- AI on
+	case 1: 		//------------------------------------- AI on
 
 	reset();
 		
@@ -196,7 +196,7 @@ void play(int player)
 		game[hor][ver]='X';
 		if(player!=1 || player != 2)
 		printf("[ ERROR ] - player not found");
-		scanf("%d", %AI);
+		scanf("%d", &AI);
 	
 }
 
