@@ -36,7 +36,6 @@ int main(void){
 	int winner=0, plays=0, player=0 ;
 	
 	srand(time(NULL));
-	
 	gamemode();
 
 	switch (AI)	{
