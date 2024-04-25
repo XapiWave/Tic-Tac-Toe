@@ -4,6 +4,7 @@
  * ABC - 123  cords		✔
  * Better User UI		✔
  * AI 				to-do
+ * Rematch
  * rounds?				
  * 
  */
@@ -17,7 +18,7 @@ char game[3][3];
 
 char player1[50];
 char player2[50];
-int AI;					// 1 -> AI - on		||		0 -> AI - off
+int AI;					// 1 -> AI - on		||	  0 -> AI - off
 
 void name();
 void reset();
@@ -37,10 +38,13 @@ int main(void){
 	srand(time(NULL));
 	
 	gamemode();
-	reset();
-	
-	/* -------------------------- */ if(AI==0) {
+
+	switch (AI)	{
+
+	case 0:			//------------------------------------- AI off
+		
 	name();
+	reset();
 	
 	while(winner==0 && plays<=9)
 	{
@@ -58,9 +62,11 @@ int main(void){
 system("clear");
 display();
 win(player,winner);
-	/* ------------------------------------- */ }
-	
-				if(AI==1) {
+		break;
+
+	case 1; 		//------------------------------------- AI on
+
+	reset();
 		
 	while(winner==0 && plays<=9)
 	{
@@ -78,15 +84,19 @@ win(player,winner);
 system("clear");
 display();
 win(player,winner);
-							}
+			
+		break;			//}
 
-
+	default:
+	printf("[ ERROR ] Porfavor selecione um modo de jogo");
+		break;
+}
 return 0;
 }
 
 // --------------------------------------------------------------------------------------------------------------------------
 
-// ====================	name
+// =====================================================================================	name
 
 void name() {
 	printf("\n\n\t\t\t\tJogador 1 -> O\n\t\t\t\tJogador 2 -> X\n\n");
@@ -97,7 +107,7 @@ void name() {
 	scanf("%s", player2);
  }
 
-// ====================	reset
+// =====================================================================================	reset
 
 void reset(){
 for (int h=0; h<3; h++)
@@ -105,7 +115,7 @@ for (int h=0; h<3; h++)
 		game[v][h]=' ';
 }
 
-// ====================	display
+// =====================================================================================	display
 
 void display(){
 printf("\n\t  A   B   C\n\t|---|---|---|\n");
@@ -123,9 +133,10 @@ if (AI==1)	{
 
 }
 
-// ====================	play
+// =====================================================================================	play
 
-void play(int player){
+void play(int player)
+{
 	int ver=0, hor=0, validate=0;
 	char verC;
 	
@@ -147,7 +158,7 @@ void play(int player){
 	else {	validate=1;	}
 		
 	}while(!validate);
-				}
+		    }
 
 
 	if(AI == 1) {		//------------------------------------------------------------------------- AI on
@@ -159,11 +170,11 @@ void play(int player){
 			hor--;
 			ver= Vert(verC);
 			
-			if(game[hor][ver]!=' ') {
+			if(game[hor][ver]!=' ') 	  {
 			system("clear");
 			display();
 			printf("Coordenadas Invalidas!"); }
-			else {	validate=1;	}
+			else {  validate=1;  }
 			
 		}while(!validate);
 			}
@@ -175,8 +186,8 @@ void play(int player){
 			hor = rand()%3;
 			
 			}while(game[ver][hor] != ' ');
-					   }
 				}
+		   }
 	
 
 		if(player==1)
@@ -186,7 +197,7 @@ void play(int player){
 	
 }
 
-// ==================== vertical convertor
+// ===================================================================================== vertical convertor
 
 int Vert(char cha){
 	int nu;
@@ -196,12 +207,12 @@ int Vert(char cha){
 		nu = 1;
 	if(cha == 'C' || cha == 'c')
 		nu = 2;
-//	if(nu>2)
-//		nu = -1;
+	if(cha != 'A' || cha != 'a' || cha != 'B' || cha != 'b' || cha != 'C' || cha != 'c')
+		nu = -1;
 	return nu;
 }
 
-// ====================	verif
+// =====================================================================================	verif
 
 int verif(){
 	for(int i=0;i<3;i++) {
@@ -218,7 +229,7 @@ int verif(){
 
 return 0;}
 
-// ====================	win
+// =====================================================================================	win
 
 void win(int player, int winner){
 	if(AI==0)	{
@@ -246,7 +257,7 @@ void win(int player, int winner){
 				}
 }
 
-// ====================	gamemode
+// =====================================================================================	gamemode
 
 void gamemode() {
 	
