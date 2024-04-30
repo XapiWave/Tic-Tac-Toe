@@ -127,9 +127,9 @@ for (int v=0; v<3; v++){
 	printf("\n\t|---|---|---|\n");
 }
 if (AI==0)	{
-	printf("\t\t\t\t%s -> O\n\t\t\t\t%s -> X\n\n", player1, player2);	}
+	printf("\t\t\t\t%s -> X\n\t\t\t\t%s -> O\n\n", player1, player2);	}
 if (AI==1)	{
-	printf("\t\t\t\tJogador -> O\n\t\t\t\tAI -> X\n\n");	}
+	printf("\t\t\t\tJogador -> X\n\t\t\t\tAI -> O\n\n");	}
 
 }
 
@@ -168,16 +168,16 @@ void play(int player)
 			scanf("%d %c", &hor, &verC);
 			
 			hor--;
-			ver= Vert(verC);
+			ver = Vert(verC);
 			
-			if(game[hor][ver]!=' ') 	  {
+			if(game[hor][ver]!=' ') 	  	  {
 			system("clear");
 			display();
 			printf("Coordenadas Invalidas!"); }
 			else {  validate=1;  }
 			
 		}while(!validate);
-			}
+					  }
 			
 		if(player==2) {			// --------------- AI
 			do{
@@ -186,17 +186,17 @@ void play(int player)
 			hor = rand()%3;
 			
 			}while(game[ver][hor] != ' ');
+					  }
 				}
-		   }
 	
 
 		if(player==1)
-		game[hor][ver]='O';
-		else
 		game[hor][ver]='X';
-		if(player!=1 || player != 2)
-		printf("[ ERROR ] - player not found");
-		scanf("%d", &AI);
+		else
+		game[hor][ver]='O';
+		if(player!=1 && player != 2) {
+		printf("\n\n[ ERROR ] - player not found");
+		system("exit");			}
 	
 }
 
@@ -210,7 +210,7 @@ int Vert(char cha){
 		nu = 1;
 	if(cha == 'C' || cha == 'c')
 		nu = 2;
-	if(cha != 'A' || cha != 'a' || cha != 'B' || cha != 'b' || cha != 'C' || cha != 'c')
+	if(cha != 'A' && cha != 'a' && cha != 'B' && cha != 'b' && cha != 'C' && cha != 'c')
 		nu = -1;
 	return nu;
 }
@@ -235,7 +235,7 @@ return 0;}
 // =====================================================================================	win
 
 void win(int player, int winner){
-	if(AI==0)	{
+	if(AI==0)	{		//------------------------------------- AI off
 	if (winner)
 	switch(player) {
 		case 1: printf("\n Parabéns, o %s venceu", player1);
@@ -247,7 +247,7 @@ void win(int player, int winner){
 		printf("Empate!!!!");
 				}
 				
-	if(AI==1)	{
+	if(AI==1)	{		//------------------------------------- AI on
 		if (winner)
 	switch(player) {
 		case 1: printf("\n Parabéns, voce venceu");
@@ -271,7 +271,6 @@ void gamemode() {
 	
 	system("clear");
 }
-
 
 
 
