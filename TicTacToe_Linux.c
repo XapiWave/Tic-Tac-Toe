@@ -5,7 +5,7 @@
  * Better User UI		✔
  * AI 				to-do
  * Rematch
- * rounds?				
+ * rounds?				✔
  * 
  */
  
@@ -19,6 +19,7 @@ char game[3][3];
 char player1[50];
 char player2[50];
 int AI;					// 1 -> AI - on		||	  0 -> AI - off
+int *rounds;
 
 void name();
 void reset();
@@ -34,6 +35,7 @@ void gamemode();
 int main(void)
 {
 	int winner=0, plays=0, player=0 ;
+	rounds = &plays;
 	
 	srand(time(NULL));
 	gamemode();
@@ -126,11 +128,11 @@ for (int v=0; v<3; v++){
 	}
 	printf("\n\t|---|---|---|\n");
 }
-if (AI==0)	{
-	printf("\t\t\t\t%s -> X\n\t\t\t\t%s -> O\n\n", player1, player2);	}
-if (AI==1)	{
-	printf("\t\t\t\tJogador -> X\n\t\t\t\tAI -> O\n\n");	}
-
+if (AI==0)
+	printf("\t\t\t\t%s -> X\n\t\t\t\t%s -> O\n\n", player1, player2);
+if (AI==1)
+	printf("\t\t\t\tJogador -> X\n\t\t\t\tAI -> O\n\n");
+printf("\tRondas-> %lu\n\n", (long)*rounds);
 }
 
 // =====================================================================================	play
@@ -271,7 +273,6 @@ void gamemode() {
 	
 	system("clear");
 }
-
 
 
 
