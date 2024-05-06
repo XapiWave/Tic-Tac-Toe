@@ -14,7 +14,7 @@
 #include <time.h>
 #include <ctype.h>
 
-char game[3][3];
+char game[3][3];			// horizontal -- vertical
 
 char player1[50];
 char player2[50];
@@ -40,13 +40,14 @@ int main(void)
 	srand(time(NULL));
 	gamemode();
 
+	reset();
+
 	switch (AI)
 {
 
 	case 0:			//------------------------------------- AI off
 		
 	name();
-	reset();
 	
 	while(winner==0 && plays<9)
 	{
@@ -68,7 +69,6 @@ win(player,winner);
 
 	case 1: 		//------------------------------------- AI on
 
-	reset();
 		
 	while(winner==0 && plays<9)
 	{
@@ -114,17 +114,17 @@ void name() {
 void reset(){
 for (int h=0; h<3; h++)
 	for (int v=0; v<3; v++)
-		game[v][h]=' ';
+		game[h][v]=' ';
 }
 
 // =====================================================================================	display
 
 void display(){
 printf("\n\t  A   B   C\n\t|---|---|---|\n");
-for (int v=0; v<3; v++){
-	printf("      %d |",v+1);
-	for (int h=0; h<3; h++){
-		printf(" %c |",game[v][h]);
+for (int h=0; h<3; h++){
+	printf("      %d |",h+1);
+	for (int v=0; v<3; v++){
+		printf(" %c |",game[h][v]);
 	}
 	printf("\n\t|---|---|---|\n");
 }
@@ -184,18 +184,21 @@ void play(int player)
 		if(player==2) {			// --------------- AI
 			do{
 			
-			ver = rand()%3;
 			hor = rand()%3;
+			ver = rand()%3;
 			
-			}while(game[ver][hor] != ' ');
+			}while(game[hor][ver] != ' ');
 					  }
-				}
+		    }
 	
+
+
 
 		if(player==1)
 		game[hor][ver]='X';
 		else
 		game[hor][ver]='O';
+
 		if(player!=1 && player != 2) {
 		printf("\n\n[ ERROR ] - player not found");
 		system("exit");			}
@@ -221,13 +224,13 @@ int Vert(char cha){
 
 int verif(){
 for(int i=0;i<3;i++) {
-		if(game[i][0]==game[i][1] && game[i][0]==game[i][2] && game[i][2]!=' ')
-			return 1;
-		if(game[0][i]==game[1][i] && game[0][i]==game[2][i] && game[2][i]!=' ')
-			return 1;
-		     }
+	if(game[i][0]==game[i][1] && game[i][0]==game[i][2] && game[i][2]!=' ')
+		return 1;
+	if(game[0][i]==game[1][i] && game[0][i]==game[2][i] && game[2][i]!=' ')
+		return 1;
+	}
 	
-	 if (game[0][0]==game[1][1] && game[0][0]==game[2][2] && game[2][2]!=' ')
+	 if (game[0][0]==game[1][1] && game[0][0]==game[2][2] && game[1][1]!=' ')
    		 return 1;
    	 if (game[0][2]==game[1][1] && game[0][2]==game[2][0] && game[1][1]!=' ')
    		 return 1;
@@ -240,25 +243,25 @@ void win(int player, int winner){
 	if(AI==0)	{		//------------------------------------- AI off
 	if (winner)
 	switch(player) {
-		case 1: printf("\n Parabéns, o %s venceu", player1);
+		case 1: printf("\n Parabéns, o %s venceu!!\n\n", player1);
 					break;
-		case 2: printf("\n Parabéns, o %s venceu", player2);
+		case 2: printf("\n Parabéns, o %s venceu!!\n\n", player2);
 					break;
 					}
 	else
-		printf("Empate!!!!");
+		printf("Empate!!!!\n\n");
 				}
 				
 	if(AI==1)	{		//------------------------------------- AI on
 		if (winner)
 	switch(player) {
-		case 1: printf("\n Parabéns, voce venceu");
+		case 1: printf("\n Parabéns, voce venceu!!\n\n");
 					break;
-		case 2: printf("\n Lmao, voce perdeu a um AI, KEKW");
+		case 2: printf("\n Lmao, voce perdeu a um AI, KEKW\n\n");
 					break;			
 					}
 	else
-		printf("Empate!!!!");
+		printf("Empate!!!!\n\n");
 				}
 }
 
