@@ -30,3 +30,8 @@ The game is written in portuguese because this is my assignment from school, I'm
 
 ``./TicTacToe``
 
+===========================================================================
+
+## Screenshot ingame
+
+![TicTacToe](https://github.com/XapiWave/Tic-Tac-Toe/blob/main/Img/screenshot_game.png?raw=true)
