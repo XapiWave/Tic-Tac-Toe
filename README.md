@@ -17,17 +17,11 @@ The game is written in portuguese because this is my assignment from school, I'm
 ### To run on linux please use :
 
 Install the build-essential packages
-    |
-    v
-'''$ sudo apt install build-essential'''
+''$ sudo apt install build-essential''
 
 Compile the C program with GCC Compiler
-    |
-    v
-'''$ gcc TicTacToe_Linux.c -o TicTacToe'''
+''$ gcc TicTacToe_Linux.c -o TicTacToe''
 
 Run the game
-    |
-    v
-'''./TicTacToe'''
+''./TicTacToe''
 
