@@ -87,11 +87,11 @@ system("clear");
 display();
 win(player,winner);
 			
-		break;			//}
-
-	default:
-printf("[ ERROR ] Porfavor selecione um modo de jogo");
 		break;
+
+//	default:
+//printf("[ ERROR ] Porfavor selecione um modo de jogo");
+//		break;
 }
 return 0;
 }
@@ -272,7 +272,11 @@ void gamemode() {
 	printf("\nEscolha o modo de jogo . . .\n\n\n\t\t[ 1 ] -> jogar solo(vs AI)\n\t\t[ 2 ] -> Multiplayer(local)\n\n\nSua escolha -> ");
 	scanf("%d", &AI);
 	if(AI==2)
-		AI=AI-2;
+		AI==0;
+	if(AI != 1 && AI != 0) {
+		system("clear");
+		printf("\n\n[ ERROR ] - Escolha um modo de jogo correto");
+		system("exit"); }
 	
 	system("clear");
 }
