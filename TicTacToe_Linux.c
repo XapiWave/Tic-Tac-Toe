@@ -3,9 +3,10 @@
  * Insert Name			✔
  * ABC - 123  cords		✔
  * Better User UI		✔
- * AI 				✔
- * Rematch			to-do
- * rounds?			✔
+ * AI 					✔
+ * Rematch				✔
+ * rounds?				✔
+ * colors				to-do
  * 
  */
  
@@ -14,7 +15,7 @@
 #include <time.h>
 #include <ctype.h>
 
-char game[3][3];			// horizontal -- vertical
+char game[3][3];		// horizontal -- vertical
 
 char player1[50];
 char player2[50];
@@ -29,26 +30,33 @@ int Vert(char cha);
 int verif();
 void win();
 void gamemode();
+int regame(int rematch);
 
 // --------------------------------------------------------------------------------------------------------------------------
 
 int main(void)
 {
-	int winner=0, plays=0, player=0 ;
+	int winner=0, plays=0, player=0, rematch=0 ;
 	rounds = &plays;
 	
 	srand(time(NULL));
 	gamemode();
 
-	reset();
-
 	switch (AI)
-{
-
+	{
+		
+// ==============================================================
 	case 0:			//------------------------------------- AI off
 		
 	name();
 	
+	do {
+	reset();
+	if (plays!=0)	{
+		plays = 0;
+		player = 0;
+		winner = 0; }
+		
 	while(winner==0 && plays<9)
 	{
 		if(plays%2==0)
@@ -65,10 +73,20 @@ int main(void)
 system("clear");
 display();
 win(player,winner);
+
+rematch = regame(rematch);
+	} while (rematch != 1);
 		break;
 
+// ==============================================================
 	case 1: 		//------------------------------------- AI on
 
+	do {
+	reset();
+	if (plays!=0)	{
+		plays = 0;
+		player = 0;
+		winner = 0; }
 		
 	while(winner==0 && plays<9)
 	{
@@ -87,11 +105,13 @@ system("clear");
 display();
 win(player,winner);
 			
+rematch = regame(rematch);
+	} while (rematch != 1);
 		break;
 
-//	default:
-//printf("[ ERROR ] Porfavor selecione um modo de jogo");
-//		break;
+	default:
+printf("[ ERROR ] Porfavor selecione um modo de jogo");
+		break;
 }
 return 0;
 }
@@ -273,13 +293,19 @@ void gamemode() {
 	scanf("%d", &AI);
 	if(AI==2)
 		AI=0;
-	if(AI != 1 && AI != 0) {
-		system("clear");
-		printf("\n\n[ ERROR ] - Escolha um modo de jogo correto");
-		system("exit"); }
 	
 	system("clear");
 }
 
+// =====================================================================================	Rematch
 
-
+int regame(int rematch) {
+	printf("\n\nRematch?!\n\n\n\t\t[ 1 ] -> Sim\n\t\t[ 2 ] -> Nao\n\n\nSua escolha -> ");
+	scanf("%d", &rematch);
+	if(rematch==1)
+		return 0;
+	else
+		return 1;
+	
+	system("clear");
+}
