@@ -3,10 +3,10 @@
  * Insert Name			✔
  * ABC - 123  cords		✔
  * Better User UI		✔
- * AI 					✔
- * Rematch				✔
- * rounds?				✔
- * colors				to-do
+ * AI 				✔
+ * Rematch			✔
+ * rounds?			✔
+ * colors			to-do
  * 
  */
  
