@@ -6,7 +6,7 @@
  * AI 				✔
  * Rematch			✔
  * rounds?			✔
- * colors			to-do
+ * colors			x
  * 
  */
  
@@ -21,6 +21,7 @@ char player1[50];
 char player2[50];
 int AI;					// 1 -> AI - on		||	  0 -> AI - off
 int *rounds;
+int rematch=0, rmp1=0, rmp2=0;
 
 void name();
 void reset();
@@ -30,13 +31,13 @@ int Vert(char cha);
 int verif();
 void win();
 void gamemode();
-int regame(int rematch);
+void regame();
 
 // --------------------------------------------------------------------------------------------------------------------------
 
 int main(void)
 {
-	int winner=0, plays=0, player=0, rematch=0 ;
+	int winner=0, plays=0, player=0;
 	rounds = &plays;
 	
 	srand(time(NULL));
@@ -74,8 +75,13 @@ system("clear");
 display();
 win(player,winner);
 
-rematch = regame(rematch);
-	} while (rematch != 1);
+regame();
+	if(plays%2==0)
+		rmp2++;
+	else
+		rmp1++;
+	} while (rematch != 0);
+printf("\n\nObrigado por jogares o jogo!!!");
 		break;
 
 // ==============================================================
@@ -105,8 +111,13 @@ system("clear");
 display();
 win(player,winner);
 			
-rematch = regame(rematch);
-	} while (rematch != 1);
+regame();
+	if(plays%2==0)
+		rmp1++;
+	else
+		rmp2++;
+	} while (rematch != 0);
+printf("\n\nObrigado por jogares o jogo!!!");
 		break;
 
 	default:
@@ -148,11 +159,24 @@ for (int h=0; h<3; h++){
 	}
 	printf("\n\t|---|---|---|\n");
 }
-if (AI==0)
+if (AI==0)	{
 	printf("\t\t\t\t%s -> X\n\t\t\t\t%s -> O\n\n", player1, player2);
-if (AI==1)
+	if (rematch!=0)	{
+	printf("\tRematches -> %d\n\n", rematch);
+	printf("\t%s venceu -> %d vezes\n",player1 ,rmp1);
+	printf("\t%s venceu -> %d vezes\n\n",player2 ,rmp2);
+					}
+			}
+if (AI==1)	{
 	printf("\t\t\t\tJogador -> X\n\t\t\t\tAI -> O\n\n");
+	if (rematch!=0)	{
+	printf("\tRematches -> %d\n\n", rematch);
+	printf("\tVoce venceu -> %d vezes\n", rmp1);
+	printf("\tAI venceu -> %d vezes\n\n", rmp2);
+					}
+			}
 printf("\tRondas-> %lu\n\n", (long)*rounds);
+
 }
 
 // =====================================================================================	play
@@ -211,8 +235,6 @@ void play(int player)
 					  }
 		    }
 	
-
-
 
 		if(player==1)
 		game[hor][ver]='X';
@@ -299,13 +321,14 @@ void gamemode() {
 
 // =====================================================================================	Rematch
 
-int regame(int rematch) {
+void regame() {
+	int rm;
 	printf("\n\nRematch?!\n\n\n\t\t[ 1 ] -> Sim\n\t\t[ 2 ] -> Nao\n\n\nSua escolha -> ");
-	scanf("%d", &rematch);
-	if(rematch==1)
-		return 0;
+	scanf("%d", &rm);
+	if(rm==1)
+		rematch++;
 	else
-		return 1;
+		rematch=0;
 	
 	system("clear");
 }
