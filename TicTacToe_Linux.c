@@ -76,10 +76,6 @@ display();
 win(player,winner);
 
 regame();
-	if(plays%2==0)
-		rmp2++;
-	else
-		rmp1++;
 	} while (rematch != 0);
 printf("\n\nObrigado por jogares o jogo!!!");
 		break;
@@ -112,10 +108,6 @@ display();
 win(player,winner);
 			
 regame();
-	if(plays%2==0)
-		rmp1++;
-	else
-		rmp2++;
 	} while (rematch != 0);
 printf("\n\nObrigado por jogares o jogo!!!");
 		break;
@@ -286,8 +278,10 @@ void win(int player, int winner){
 	if (winner)
 	switch(player) {
 		case 1: printf("\n Parabéns, o %s venceu!!\n\n", player1);
+		rmp1++;
 					break;
 		case 2: printf("\n Parabéns, o %s venceu!!\n\n", player2);
+		rmp2++;
 					break;
 					}
 	else
@@ -298,8 +292,10 @@ void win(int player, int winner){
 		if (winner)
 	switch(player) {
 		case 1: printf("\n Parabéns, voce venceu!!\n\n");
+		rmp1++;
 					break;
 		case 2: printf("\n Lmao, voce perdeu a um AI, KEKW\n\n");
+		rmp2++;
 					break;			
 					}
 	else
